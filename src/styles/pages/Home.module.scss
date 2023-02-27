@@ -1,0 +1,7 @@
+@import '../utils/variables';
+
+.test {
+  h1 {
+    color: #{$background};
+  }
+}
