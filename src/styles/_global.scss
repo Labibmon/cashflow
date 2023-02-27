@@ -1,6 +1,6 @@
 :root {
-  --primaryRoot: var(--primary);
-  --SecondaryRoot: var(--secondary);
+  --primary: var(--primaryLight);
+  --secondary: var(--secondaryLight);
   // --max-width: 1100px;
   // --border-radius: 12px;
   // --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -44,8 +44,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primaryRoot: var(--primary);
-    --SecondaryRoot: var(--secondary);
+    --primary: var(--primaryDark);
+    --secondary: var(--secondaryDark);
   }
   /* :root {
     --foreground-rgb: 255, 255, 255;
