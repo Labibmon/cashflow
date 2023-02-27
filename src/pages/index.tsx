@@ -18,6 +18,7 @@ export default function Home() {
       secondary: '#000000',
     }
   })
+  
   return (
     <Layout>
         hallooo
