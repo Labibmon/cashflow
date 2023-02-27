@@ -14,7 +14,7 @@ export const useTheme = (theme: UseTheme) => {
   };
 
   if (typeof window !== "undefined") {
-    let color: keyof ColorsTheme;
+    // let color: keyof ColorsTheme;
     setStyleAttribute("dark");
     setStyleAttribute("light");
 
