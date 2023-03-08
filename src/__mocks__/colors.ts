@@ -2,12 +2,14 @@ import { UseTheme } from "@/types/color-theme";
 
 const colors: UseTheme = {
   dark: {
-    primary: "#000000",
-    secondary: "#FFFFFF",
+    primary: "#0B1437",
+    secondary: "#1B254B",
+    background: "#111C44",
   },
   light: {
-    primary: "#FFFFFF",
-    secondary: "#000000",
+    primary: "#707EAE",
+    secondary: "#A3AED0",
+    background: "#FFFFFF",
   },
 };
 

@@ -1,12 +1,14 @@
 :root {
-  --primary: var(--primarylight);
-  --secondary: var(--secondarylight);
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
+  --background: var(--background-light);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: var(--primarydark);
-    --secondary: var(--secondarydark);
+    --primary: var(--primary);
+    --secondary: var(--secondary);
+    --background: var(--background);
   }
 }
 

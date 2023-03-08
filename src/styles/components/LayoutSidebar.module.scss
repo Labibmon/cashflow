@@ -5,9 +5,9 @@ $paddingResponsive: calc(($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) c
 
 $heightHeader: 20px;
 
-$backgroundColorBody: rgb(239, 240, 243);
-$backgroundColorHeader: #FFFFFF;
-$backgroundColorSidebar: #304156;
+$backgroundColorBody: $ColorBackground;
+$backgroundColorHeader: $ColorSecondary;
+$backgroundColorSidebar: $ColorPrimary;
 
 .main{
   padding: 0;
@@ -47,10 +47,10 @@ $backgroundColorSidebar: #304156;
 
 .header{
   @include fixedHeight($heightHeader);
+  @include flex(row, flex-start, flex-start);
   @include fixedWidth(calc(100% - (($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 2));
   
   overflow: hidden;
-  background-color: yellow;
   background-color: $backgroundColorHeader;
   padding: $paddingResponsive;
 }

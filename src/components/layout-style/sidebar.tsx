@@ -1,5 +1,7 @@
-import { FC, ReactNode, useState } from 'react'
+import { FC, ReactNode, useEffect, useState } from 'react'
 import styles from '@/styles/components/LayoutSidebar.module.scss'
+import stylesColor from '@/styles/utils/colors.module.scss'
+import Icons from '@/components/icons';
 
 type SidebarPropType = {
   children?: ReactNode
@@ -8,20 +10,56 @@ type SidebarPropType = {
 const Sidebar: FC<SidebarPropType> = ({
   children
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  let dark: boolean =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isDark, setIsDark] = useState<boolean>();
+
+  const handleDarkMode = () => {
+    setIsDark(!isDark)
+    localStorage.setItem('theme', isDark ? 'light' : 'dark')
+    location.reload();
+  }
+
+  useEffect(() => {
+    localStorage.getItem('theme') ? setIsDark(localStorage.getItem('theme') === 'dark') : setIsDark(dark)
+  }, [dark])
 
   return (
     <main className={styles.main}>
       <div className={styles.body}>
-        <div className={`${styles.sidebar} ${isOpen ? 'open' : 'close' }`}>
+        <div className={`${styles.sidebar} ${isOpen ? 'open' : 'close'}`}>
           <div className={styles.sidebarContent}>
             sidebar
           </div>
         </div>
         <div className={styles.content}>
           <div className={styles.header}>
-            <button onClick={()=>setIsOpen(!isOpen)}>open</button>
-            header
+            <Icons
+              onClick={() => setIsOpen(!isOpen)}
+              height='20px'
+              width='20px'
+              type='hamburger'
+              style={{
+                cursor: 'pointer',
+                transform: isOpen ? 'rotate(180deg)' : 'none',
+                transition: 'all .2s'
+              }}
+            />
+
+            <Icons
+              onClick={() => handleDarkMode()}
+              height='20px'
+              width='20px'
+              type='moon'
+              color={isDark ? '#FFFFFF' : '#000000'}
+              style={{
+                cursor: 'pointer',
+                marginLeft: 'auto'
+              }}
+            />
           </div>
           <div className={styles.children}>
             {children}
