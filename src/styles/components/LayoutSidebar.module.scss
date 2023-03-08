@@ -1,0 +1,66 @@
+@import '../utils/variables';
+
+$paddingDefault: 16;
+$paddingResponsive: calc(($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) calc(($paddingDefault * 1px) + ($paddingDefault * 0.01vw));
+
+$heightHeader: 20px;
+
+$backgroundColorBody: rgb(239, 240, 243);
+$backgroundColorHeader: #FFFFFF;
+$backgroundColorSidebar: #304156;
+
+.main{
+  padding: 0;
+  height: 100vh;
+}
+
+.body{
+  @include flex(row, flex-start, flex-start);
+  height: 100vh;
+}
+
+.sidebar{
+  @include fixedHeight(100vh);
+  width: calc(100px + 10vw);
+  overflow: auto;
+  background-color: $backgroundColorSidebar;
+
+  transition: all .3s;
+
+  &[class*="close"]{
+    width: 0;
+  }
+}
+
+.sidebarContent{
+  padding: $paddingResponsive;
+}
+
+.content{
+  @include fixedHeight(100%);
+  @include fixedHeight(100%);
+  @include flex(column, flex-start, flex-start);
+  overflow: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+.header{
+  @include fixedHeight($heightHeader);
+  @include fixedWidth(calc(100% - (($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 2));
+  
+  overflow: hidden;
+  background-color: yellow;
+  background-color: $backgroundColorHeader;
+  padding: $paddingResponsive;
+}
+
+.children{
+  @include fixedWidth(calc(100% - (($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 2));
+  @include fixedHeight(calc(100% - ($heightHeader + ((($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 4))));
+  background-color: $backgroundColorBody;
+  padding: $paddingResponsive;
+  overflow-x: auto;
+  overflow-y: auto;
+  box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+}

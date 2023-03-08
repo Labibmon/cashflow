@@ -1,35 +1,27 @@
-import { MetaSeo, SeoMetaSource } from '@/config/seo';
+import { FC, ReactNode, useContext } from 'react';
 import Head from 'next/head'
-import { FC, ReactNode } from 'react';
+import { SeoMetaSource } from '@/config/seo';
+import LayoutStyle from '@/components/layout-style';
+import { ThemeContext } from '@/config';
 
-type LayoutPropType = {
-  title?: string,
-  lang?: string,
-  description?: string,
-  author?: string,
-  meta?: ConcatArray<MetaSeo>,
+const Layout: FC<{
   children?: ReactNode
-}
-
-const Layout: FC<LayoutPropType> = ({
-  description,
-  author,
-  meta,
-  title,
+}> = ({
   children
 }) => {
+  const { data } = useContext(ThemeContext);
 
   const metaData = SeoMetaSource({
-    description,
-    author,
-    meta: meta || [],
-    title,
+    description: data.description,
+    author: data.author,
+    meta: data.meta || [],
+    title: data.title,
   })
 
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{data.title}</title>
         <link rel="manifest" href="/manifest.json" />
 
         {metaData.map(({ name, content, property }, i) => (
@@ -37,29 +29,13 @@ const Layout: FC<LayoutPropType> = ({
         ))}
 
       </Head>
-      <main>
+      <LayoutStyle>
         {children}
-      </main>
+      </LayoutStyle>
     </>
+
   )
 }
-
-Layout.defaultProps = {
-  lang: `en`,
-  description: `Cashflow Application`,
-  author: 'Karya Labib',
-  title : 'Cashflow',
-  meta: [
-    {
-      name: 'robots',
-      content: 'index, follow'
-    },
-    {
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1'
-    }
-  ],
-};
 
 export default Layout
 
