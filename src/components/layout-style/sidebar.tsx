@@ -14,7 +14,7 @@ const Sidebar: FC<SidebarPropType> = ({
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>();
 
   const handleDarkMode = () => {
@@ -31,38 +31,44 @@ const Sidebar: FC<SidebarPropType> = ({
     <main className={styles.main}>
       <div className={styles.body}>
         <div className={`${styles.sidebar} ${isOpen ? 'open' : 'close'}`}>
+          <div className={styles.sidebarOverlay} onClick={() => setIsOpen(!isOpen)} />
           <div className={styles.sidebarContent}>
             sidebar
           </div>
         </div>
         <div className={styles.content}>
           <div className={styles.header}>
-            <Icons
-              onClick={() => setIsOpen(!isOpen)}
-              height='20px'
-              width='20px'
-              type='hamburger'
-              style={{
-                cursor: 'pointer',
-                transform: isOpen ? 'rotate(180deg)' : 'none',
-                transition: 'all .2s'
-              }}
-            />
+            <div>
+              <Icons
+                onClick={() => setIsOpen(!isOpen)}
+                height='20px'
+                width='20px'
+                type='hamburger'
+                color={isDark ? '#FFFFFF' : '#000000'}
+                style={{
+                  cursor: 'pointer',
+                  transform: isOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'all .2s'
+                }}
+              />
 
-            <Icons
-              onClick={() => handleDarkMode()}
-              height='20px'
-              width='20px'
-              type='moon'
-              color={isDark ? '#FFFFFF' : '#000000'}
-              style={{
-                cursor: 'pointer',
-                marginLeft: 'auto'
-              }}
-            />
+              <Icons
+                onClick={() => handleDarkMode()}
+                height='20px'
+                width='20px'
+                type='moon'
+                color={isDark ? '#FFFFFF' : '#000000'}
+                style={{
+                  cursor: 'pointer',
+                  marginLeft: 'auto'
+                }}
+              />
+            </div>
           </div>
           <div className={styles.children}>
-            {children}
+            <div>
+              {children}
+            </div>
           </div>
         </div>
       </div>

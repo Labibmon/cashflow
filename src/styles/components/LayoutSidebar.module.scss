@@ -9,58 +9,95 @@ $backgroundColorBody: $ColorBackground;
 $backgroundColorHeader: $ColorSecondary;
 $backgroundColorSidebar: $ColorPrimary;
 
-.main{
+.main {
   padding: 0;
   height: 100vh;
 }
 
-.body{
+.body {
   @include flex(row, flex-start, flex-start);
   height: 100vh;
+  position: relative;
 }
 
-.sidebar{
-  @include fixedHeight(100vh);
+.sidebar {
   width: calc(100px + 10vw);
-  overflow: auto;
-  background-color: $backgroundColorSidebar;
+  overflow: hidden;
 
   transition: all .3s;
 
-  &[class*="close"]{
+  &[class*="close"] {
     width: 0;
+  }
+
+  @media screen and (max-width: $breakpoint_max_md) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
   }
 }
 
-.sidebarContent{
-  padding: $paddingResponsive;
-}
-
-.content{
-  @include fixedHeight(100%);
-  @include fixedHeight(100%);
-  @include flex(column, flex-start, flex-start);
-  overflow: auto;
-  width: 100%;
-  max-width: 100%;
-}
-
-.header{
-  @include fixedHeight($heightHeader);
-  @include flex(row, flex-start, flex-start);
-  @include fixedWidth(calc(100% - (($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 2));
-  
-  overflow: hidden;
-  background-color: $backgroundColorHeader;
-  padding: $paddingResponsive;
-}
-
-.children{
-  @include fixedWidth(calc(100% - (($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 2));
-  @include fixedHeight(calc(100% - ($heightHeader + ((($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 4))));
-  background-color: $backgroundColorBody;
+.sidebarContent {
+  @include fixedHeight(100vh);
+  background-color: $backgroundColorSidebar;
   padding: $paddingResponsive;
   overflow-x: auto;
-  overflow-y: auto;
+  overflow-y: hidden;
+  z-index: 2;
+  width: 100%;
+  
+  @media screen and (max-width: $breakpoint_max_md) {
+    width: 70%;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.sidebarOverlay {
+  @include fixedHeight(100vh);
+  display: none;
+  z-index: 1;
+
+  @media screen and (max-width: $breakpoint_max_md) {
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.content {
+  @include fixedHeight(100vh);
+  @include flex(column, flex-start, flex-start);
+  overflow: auto;
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100vw;
+}
+
+.header {
+  @include fixedWidth(100%);
+  width: 100%;
+  background-color: $backgroundColorHeader;
+
+  >div {
+    @include fixedHeight($heightHeader);
+    @include flex(row, flex-start, flex-start);
+    padding: $paddingResponsive;
+  }
+}
+
+.children {
+  @include fixedWidth(100%);
+  @include fixedHeight(calc(100% - ($heightHeader + ((($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) * 2))));
+  background-color: $backgroundColorBody;
+  overflow-x: auto;
+  overflow-y: hidden;
   box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+
+  >div {
+    @include fixedHeight(100%);
+    padding: $paddingResponsive;
+  }
 }
