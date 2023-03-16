@@ -1,12 +1,15 @@
-import { Inter } from 'next/font/google'
+import Card from '@/components/commons/card/index.'
+import Flex from '@/components/commons/flex'
 import Layout from '@/components/layout-page'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <Layout>
-      hallooo
+      <Flex flexDirection='row' alignContent={'space-between'}>
+        <Card>Hallo</Card>
+        <Card>Hallo</Card>
+        <Card>Hallo</Card>
+      </Flex>
     </Layout>
   )
 }
