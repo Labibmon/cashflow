@@ -1,8 +1,13 @@
-import { LayoutPropType, LayoutType } from "@/types/layout";
-import { createContext } from "react";
+import { FontList, ThemeFontType, useGetFont } from "@/hooks/use-get-font"
+import { LayoutPropType } from "@/types/layout"
+import { createContext } from "react"
 
 type ThemeContext = {
   data: LayoutPropType,
+  font: {
+    primary: FontList,
+    secondary: FontList
+  }
   colors: {
     dark: {
       primary: string
@@ -29,6 +34,10 @@ const ThemeContextDefaultValue: ThemeContext = {
       },
     ],
   },
+  font: {
+    primary: 'inter',
+    secondary: 'roboto'
+  },
   colors: {
     dark: {
       primary: '',
@@ -38,6 +47,19 @@ const ThemeContextDefaultValue: ThemeContext = {
       primary: '',
       secondary: ''
     }
+  }
+}
+
+export const ThemeFont: ThemeFontType = ({
+  primary,
+  secondary,
+}) => {
+  const isPrimary =  useGetFont(primary)
+  const isSecondary = useGetFont(secondary)
+
+  return {
+    primary: isPrimary.className,
+    secondary: isSecondary.className
   }
 }
 

@@ -4,10 +4,16 @@ $paddingDefault: 16;
 $paddingResponsive: calc(($paddingDefault * 1px) + ($paddingDefault * 0.01vh)) calc(($paddingDefault * 1px) + ($paddingDefault * 0.01vw));
 
 $heightHeader: 20px;
+$widthSidebar: calc(130px + 13vw);
 
 $backgroundColorBody: $ColorBackground;
 $backgroundColorHeader: $ColorSecondary;
 $backgroundColorSidebar: $ColorPrimary;
+
+$backgroundColorNavActive: $ColorSecondary;
+$backgroundColorNavDefault: $ColorPrimary;
+$linkColorNavDefault: $ColorSecondary;
+$linkColorNavActive: white;
 
 .main {
   padding: 0;
@@ -21,7 +27,7 @@ $backgroundColorSidebar: $ColorPrimary;
 }
 
 .sidebar {
-  width: calc(100px + 10vw);
+  width: $widthSidebar;
   overflow: hidden;
 
   transition: all .3s;
@@ -42,11 +48,9 @@ $backgroundColorSidebar: $ColorPrimary;
 .sidebarContent {
   @include fixedHeight(100vh);
   background-color: $backgroundColorSidebar;
-  padding: $paddingResponsive;
   overflow-x: auto;
   overflow-y: hidden;
   z-index: 2;
-  width: 100%;
   
   @media screen and (max-width: $breakpoint_max_md) {
     width: 70%;
@@ -100,4 +104,43 @@ $backgroundColorSidebar: $ColorPrimary;
     @include fixedHeight(100%);
     padding: $paddingResponsive;
   }
+}
+
+.linkItemsContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: $paddingResponsive;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    color: $linkColorNavDefault;
+    background-color: $backgroundColorNavDefault;
+
+    &:hover {
+      background-color: $backgroundColorNavActive;
+      color: $linkColorNavActive;
+    }
+
+    span {
+      margin-right: calc(5px + .5vw);
+    }
+
+    &[class$="active"] {
+      background-color: $backgroundColorNavActive;
+      color: $linkColorNavActive;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.logo {
+  @include flex(row, center, center);
+  padding: $paddingResponsive;
 }

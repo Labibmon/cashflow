@@ -1,7 +1,9 @@
 import { FC, ReactNode, useEffect, useState } from 'react'
-import styles from '@/styles/components/LayoutSidebar.module.scss'
-import stylesColor from '@/styles/utils/colors.module.scss'
 import Icons from '@/components/icons';
+import useWindowSize from '@/hooks/use-window-size';
+import SidebarLinkItems from '@/components/layout-style/sidebar/sidebar-link-items';
+import SidebarLogo from '@/components/layout-style/sidebar/sidebar-logo';
+import styles from '@/styles/components/LayoutSidebar.module.scss'
 
 type SidebarPropType = {
   children?: ReactNode
@@ -10,11 +12,14 @@ type SidebarPropType = {
 const Sidebar: FC<SidebarPropType> = ({
   children
 }) => {
+  const size = useWindowSize();
+  const defaultSidebarOpen = size?.width > 767
+
   let dark: boolean =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(size && defaultSidebarOpen);
   const [isDark, setIsDark] = useState<boolean>();
 
   const handleDarkMode = () => {
@@ -27,13 +32,20 @@ const Sidebar: FC<SidebarPropType> = ({
     localStorage.getItem('theme') ? setIsDark(localStorage.getItem('theme') === 'dark') : setIsDark(dark)
   }, [dark])
 
+  useEffect(() => {
+    size.width !== 0 && setIsOpen(defaultSidebarOpen)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size])
+
+
   return (
     <main className={styles.main}>
       <div className={styles.body}>
         <div className={`${styles.sidebar} ${isOpen ? 'open' : 'close'}`}>
           <div className={styles.sidebarOverlay} onClick={() => setIsOpen(!isOpen)} />
           <div className={styles.sidebarContent}>
-            sidebar
+            <SidebarLogo />
+            <SidebarLinkItems />
           </div>
         </div>
         <div className={styles.content}>

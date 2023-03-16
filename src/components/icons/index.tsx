@@ -8,7 +8,8 @@ type IconPropertiesProps = {
     className?: string;
     onClick?: () => void;
     cursor?: string;
-    style?: CSSProperties
+    style?: CSSProperties;
+    readyComponent?: boolean;
   };
 
 interface IconsProps extends IconPropertiesProps {
@@ -57,6 +58,7 @@ const Icons = ({
     onClick,
     width,
     style,
+    readyComponent = true,
   }: IconsProps) => {
     const iconStyle = useIconStyle({
       width,
@@ -65,15 +67,16 @@ const Icons = ({
       color,
       style,
     })
+    
   
-    return (
+    return readyComponent ? (
       <span
         aria-hidden="true"
         className={`${className}`}
         onClick={onClick}
         style={iconStyle}
       />
-    );
+    ) : <></>;
   };
   
   export default Icons;

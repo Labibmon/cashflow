@@ -31,8 +31,6 @@ export const useTheme = (theme: UseTheme) => {
       //OS theme setting detected as dark
       for (color in theme.light) {
         setStyleAttribute("light");
-        console.log(true)
-
       }
     } else if (dark) {
       setStyleAttribute("dark");

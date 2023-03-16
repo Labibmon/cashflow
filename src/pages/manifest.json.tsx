@@ -8,7 +8,14 @@ export const getServerSideProps: GetServerSideProps =
   const data = {
     settings:{
       websiteTitle: 'Cashflow',
-      faviconURL: '/'
+      // faviconURL: '/'
+      // "icons": [
+      //   {
+      //     "src": ${data.settings.faviconURL},
+      //     "sizes": "192x192",
+      //     "type": "image/png"
+      //   }
+      // ],
     }
   };
 
@@ -16,13 +23,6 @@ export const getServerSideProps: GetServerSideProps =
     {
       "name": "${data?.settings?.websiteTitle}",
       "short_name": "${data?.settings?.websiteTitle}",
-      "icons": [
-        {
-          "src": ${data.settings.faviconURL},
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ],
       "theme_color": "#FFFFFF",
       "background_color": "#FFFFFF",
       "start_url": "/",

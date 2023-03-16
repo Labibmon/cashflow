@@ -4,6 +4,7 @@ import { useTheme } from '@/hooks/use-theme'
 
 import colors from '@/__mocks__/colors'
 import dataConfig from '@/__mocks__/config'
+import font from '@/__mocks__/font'
 
 import '@/styles/_global.scss'
 
@@ -13,7 +14,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeContext.Provider 
-      value={{data, colors}}
+      value={{
+        data,
+        font,
+        colors
+      }}
     >
       <Component {...pageProps} />
     </ThemeContext.Provider>
