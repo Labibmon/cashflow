@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect, useState } from 'react'
-import Icons from '@/components/icons';
+import Icons from '@/components/commons/icons';
 import useWindowSize from '@/hooks/use-window-size';
 import SidebarLinkItems from '@/components/layout-style/sidebar/sidebar-link-items';
 import SidebarLogo from '@/components/layout-style/sidebar/sidebar-logo';

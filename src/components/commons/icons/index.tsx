@@ -3,8 +3,8 @@ import { IconAssetType, IconAssetTypeData, useIconsAssets } from "./icon-assets"
 
 type IconPropertiesProps = {
     color?: string;
-    height: string;
-    width: string;
+    height?: string;
+    width?: string;
     className?: string;
     onClick?: () => void;
     cursor?: string;
@@ -53,10 +53,10 @@ const useIconStyle = ({
 const Icons = ({
     type,
     color,
-    height,
     className,
     onClick,
-    width,
+    height = '10px',
+    width = '10px',
     style,
     readyComponent = true,
   }: IconsProps) => {

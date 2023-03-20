@@ -1,0 +1,9 @@
+$ColorPrimary: var(--primary);
+$ColorSecondary: var(--secondary);
+$ColorBackground: var(--background);
+
+$colors: (
+    'primary' $ColorPrimary,
+    'secondary' $ColorSecondary,
+    'background' $ColorBackground,
+)

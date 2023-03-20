@@ -4,20 +4,10 @@
   display: flex;
 }
 
-//Flex Direction
-$flexDirection: (
-  row,
-  row-reverse,
-  column,
-  column-reverse,
-  initial,
-  inherit
-);
-
 @each $name in $flexDirection {
   .flexDirection#{$name} {
     @extend .flex;
-    flex-wrap: $name
+    flex-direction: $name
   }
 }
 
@@ -25,33 +15,11 @@ $flexDirection: (
   @extend .flex;
 }
 
-//Flex Wrap
-$flexWrap: (
-  wrap,
-  nowrap,
-  wrap-reverse,
-  inherit,
-  initial,
-  unset,
-);
-
 @each $name in $flexWrap {
   .flexWrap#{$name} {
     flex-wrap: $name
   }
 }
-
-//Flex Align Items
-$flexAlignItems: (
-  baseline,
-  center,
-  flex-end,
-  flex-start,
-  stretch,
-  inherit,
-  initial,
-  unset,
-);
 
 @each $name in $flexAlignItems {
   .alignItems#{$name} {
@@ -59,59 +27,17 @@ $flexAlignItems: (
   }
 }
 
-//Flex Align Content
-$flexAlignContent: (
-  baseline,
-  center,
-  flex-end,
-  flex-start,
-  space-around,
-  space-between,
-  stretch,
-  inherit,
-  initial,
-  unset,
-);
-
 @each $name in $flexAlignContent {
   .alignContent#{$name} {
     align-content: $name
   }
 }
 
-//Flex Justify Items
-$flexJustifyItems: (
-  legacy,
-  normal,
-  stretch,
-  start,
-  left,
-  center,
-  end,
-  right,
-  flex-start,
-  flex-end,
-  inherit,
-  initial,
-);
-
 @each $name in $flexJustifyItems {
   .justifyItems#{$name} {
     justify-items: $name
   }
 }
-
-//Flex Justify Content
-$flexJustifyContent: (
-  flex-start,
-  flex-end,
-  center,
-  space-around,
-  space-between,
-  space-evenly,
-  inherit,
-  initial,
-);
 
 @each $name in $flexJustifyContent {
   .alignContent#{$name} {

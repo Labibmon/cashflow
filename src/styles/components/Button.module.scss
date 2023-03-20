@@ -1,0 +1,42 @@
+@import '../utils/variables';
+
+@each $name,
+$color, $colorText in $buttons {
+  .#{$name} {
+    padding: 14px;
+    width: fit-content;
+    cursor: pointer;
+    border: 1px solid $color;
+    border-radius: 8px;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      opacity: .1;
+    }
+
+    &_solid {
+      background-color: $color;
+      color: $colorText;
+    }
+
+    &_outline {
+      background-color: transparent;
+      color: $colorText;
+    }
+
+    &_long {
+      @include fixedWidth(100%);
+    }
+
+    @each $sizeName, $size in $defaultSize {
+      &_#{$sizeName} {
+        @include fontSize($size);
+        padding: calc(($size * 1px) + ($size * 0.01vh)) calc(($size * 1px) + ($size * 0.01vh));
+      }
+    }
+  }
+}

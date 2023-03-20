@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import Icons from "@/components/icons"
+import Icons from "@/components/commons/icons"
 import { useGetColors } from "@/hooks/use-get-colors"
 import Text from "@/components/commons/text"
 import linkItems from "@/__mocks__/link-items"

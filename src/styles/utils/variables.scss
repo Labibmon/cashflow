@@ -1,4 +1,10 @@
  /**
+* Utils imports
+*/
+ @import 'colors';
+ @import 'mixins';
+
+ /**
   * Responsive breakpoints
   * https://getbootstrap.com/docs/4.5/layout/overview/
   * 
@@ -20,8 +26,106 @@
  $breakpoint_max_lg: 991px;
  $breakpoint_max_xl: 1199px;
 
- /**
-* Utils imports
-*/
- @import 'colors.module';
- @import 'mixins';
+ // list buttons format typing: $name, $background_color, $color
+ $buttons: (
+   "primary" $ColorPrimary #FFFFFF,
+   "secondary" $ColorSecondary $ColorSecondary,
+ );
+
+ //Size Items
+ $sizeXs: 12;
+ $sizeSm: 14;
+ $sizeMd: 16;
+ $sizeLg: 18;
+ $sizeXl: 20;
+ $sizeXxl: 24;
+ $sizeXxxl: 30;
+ $sizeXxxxl: 36;
+ $sizeXxxxxl: 48;
+ $sizeXxxxxxl: 60;
+
+ $defaultSize: (
+   "xs" $sizeXs,
+   "sm" $sizeSm,
+   "md" $sizeMd,
+   "lg" $sizeLg,
+   "xl" $sizeXl,
+   "xxl" $sizeXxl,
+   "xxxl" $sizeXxxl,
+   "xxxxl" $sizeXxxxl,
+   "xxxxxl" $sizeXxxxl,
+   "xxxxxxl" $sizeXxxxl,
+ );
+
+ //Flex Direction
+ $flexDirection: (
+   row,
+   row-reverse,
+   column,
+   column-reverse,
+   initial,
+   inherit);
+
+ //Flex Wrap
+ $flexWrap: (
+   wrap,
+   nowrap,
+   wrap-reverse,
+   inherit,
+   initial,
+   unset,
+ );
+
+ //Flex Align Items
+ $flexAlignItems: (
+   baseline,
+   center,
+   flex-end,
+   flex-start,
+   stretch,
+   inherit,
+   initial,
+   unset,
+ );
+
+ //Flex Align Content
+ $flexAlignContent: (
+   baseline,
+   center,
+   flex-end,
+   flex-start,
+   space-around,
+   space-between,
+   stretch,
+   inherit,
+   initial,
+   unset,
+ );
+
+ //Flex Justify Items
+ $flexJustifyItems: (
+   legacy,
+   normal,
+   stretch,
+   start,
+   left,
+   center,
+   end,
+   right,
+   flex-start,
+   flex-end,
+   inherit,
+   initial,
+ );
+
+ //Flex Justify Content
+ $flexJustifyContent: (
+   flex-start,
+   flex-end,
+   center,
+   space-around,
+   space-between,
+   space-evenly,
+   inherit,
+   initial,
+ );

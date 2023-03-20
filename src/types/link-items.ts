@@ -1,4 +1,4 @@
-import { IconAssetType } from "@/components/icons/icon-assets"
+import { IconAssetType } from "@/components/commons/icons/icon-assets"
 
 export type LinkItemDataType = {
     label: string
