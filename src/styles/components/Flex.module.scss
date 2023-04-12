@@ -11,10 +11,6 @@
   }
 }
 
-.row {
-  @extend .flex;
-}
-
 @each $name in $flexWrap {
   .flexWrap#{$name} {
     flex-wrap: $name

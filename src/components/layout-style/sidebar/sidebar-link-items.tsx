@@ -22,7 +22,7 @@ const SidebarLinkItems: FC<SidebarLinkItemsProps> = ({
   useEffect(() => {
     if (colors && colorIcon === undefined) {
       setColorIcon(colors?.secondary)
-      
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colors])
@@ -31,18 +31,19 @@ const SidebarLinkItems: FC<SidebarLinkItemsProps> = ({
   return (
     <ul className={styles.linkItemsContainer}>
       {linkItems.data.map((link, index) => (
-        <Link key={index} href={`${link.link}`}>
-          <li
-            className={router.pathname === link.link ? 'active' : ''}
-            onMouseEnter={() => setIconHover(link.link)}
-            onMouseLeave={() => setIconHover(undefined)}
-          >
+        <li
+          key={index}
+          className={router.pathname === link.link ? 'active' : ''}
+          onMouseEnter={() => setIconHover(link.link)}
+          onMouseLeave={() => setIconHover(undefined)}
+        >
+          <Link href={`${link.link}`} >
             {(router.pathname === link.link || iconHover === link.link) ?
               <Icons
                 type={link.icon}
                 width="15px"
                 height="15px"
-                color={'#FFFFFF'}
+                color={colors?.secondary}
                 readyComponent={colorIcon !== undefined}
               />
               :
@@ -50,7 +51,7 @@ const SidebarLinkItems: FC<SidebarLinkItemsProps> = ({
                 type={link.icon}
                 width="15px"
                 height="15px"
-                color={colors?.secondary}
+                color={'#7b93a4'}
                 readyComponent={colorIcon !== undefined}
               />
             }
@@ -59,8 +60,8 @@ const SidebarLinkItems: FC<SidebarLinkItemsProps> = ({
               variant={ThemeVariantEnum.Primary}
               size={ThemeSizeEnum.Sm}
             >{link.label}</Text>
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </ul>
   )

@@ -10,6 +10,7 @@ export type FlexProps = {
   alignContent?: CSSProperties['alignContent']
   justifyItems?: CSSProperties['justifyItems']
   justifyContent?: CSSProperties['justifyContent']
+  className?: string
 }
 
 const Flex: FC<FlexProps> = ({
@@ -21,6 +22,7 @@ const Flex: FC<FlexProps> = ({
   alignContent = 'flex-start',
   justifyItems = 'flex-start',
   justifyContent ='flex-start',
+  className,
 }) => {
   return (
     <div
@@ -31,6 +33,7 @@ const Flex: FC<FlexProps> = ({
         ${styles['alignContent' + alignContent]}
         ${styles['justifyItems' + justifyItems]}
         ${styles['justifyContent' + justifyContent]}
+        ${className}
       `}
       style={{
         gap

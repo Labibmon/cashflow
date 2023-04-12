@@ -28,8 +28,8 @@
 
  // list buttons format typing: $name, $background_color, $color
  $buttons: (
-   "primary" $ColorPrimary #FFFFFF,
-   "secondary" $ColorSecondary $ColorSecondary,
+   "primary" #FFFFFF $ColorSecondary,
+   "secondary" $ColorSecondary #FFFFFF,
  );
 
  //Size Items

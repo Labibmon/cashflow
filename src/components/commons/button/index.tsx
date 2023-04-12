@@ -15,13 +15,15 @@ export type ButtonProps = {
   style?: 'outline' | 'solid'
   fullWidth?: boolean
   size?: ThemeSize
-  icon?: IconAssetType,
+  icon?: IconAssetType
+  id: string
   iconPosition?: 'left' | 'right'
 }
 
 const Button: FC<ButtonProps> = ({
   children,
   onClick,
+  id,
   variant = ColorsThemeEnum.Primary,
   size = ThemeSizeEnum.Md,
   style = 'solid',
@@ -29,7 +31,7 @@ const Button: FC<ButtonProps> = ({
   iconPosition,
   fullWidth = false
 }) => {
-  const element = typeof window === "object" && document.querySelector('#button')
+  const element = typeof window === "object" && document.querySelector(`#${id}`)
   const styleButton = element && getComputedStyle(element)
 
   const [colorIcon, setColorIcon] = useState<string>()
@@ -41,7 +43,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button
-      id="button"
+      id={id}
       onClick={onClick}
       className={`
         ${styles[variant]}
